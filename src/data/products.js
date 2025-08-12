@@ -1,0 +1,316 @@
+// products.js
+
+import TigerGreen from "../assets/Home/Tiger-Aloe/tiger-green-360x.png";
+import TigerBlack from "../assets/Home/Tiger-Aloe/tiger-black-360x.png";
+import TigerPink from "../assets/Home/Tiger-Aloe/Tiger-aloe-pink_600x.webp";
+
+import RubbyRubberFront from "../assets/Home/rubby-rubber/Rubby-rubber_540x.webp";
+import RubbyRubberBack from "../assets/Home/rubby-rubber/Rubby-rubber_540x.webp";
+
+import PeaseLilyFront from "../assets/Home/Pease-lily/Pease-lily-360x.webp";
+import PeaseLilyBack from "../assets/Home/Pease-lily/Pease-lily-black-360x.webp";
+
+import PhilippineFront from "../assets/Home/Philippine/PhilippineFront.webp";
+import PhilippineBack from "../assets/Home/Philippine/Philippine-Back-540x.webp";
+
+import BeginnerFront from "../assets/Home/Beginner/Beginner-front_540x.webp";
+import BeginnerBack from "../assets/Home/Beginner/Beginner-back_540x.webp";
+
+import DragonFront from "../assets/Home/Dragon/Dragon-front_540x.webp";
+import DragonBack from "../assets/Home/Dragon/Dragon-back_540x.webp";
+
+import PalmFront from "../assets/Home/palm/Palm_540x.webp";
+import PalmBack from "../assets/Home/palm/Palm_540x.webp";
+
+import BoughtFront from "../assets/Home/Bought-together/Bought-together-front_540x.webp";
+import BoughtBack from "../assets/Home/Bought-together/Bought-together-back_540x.webp";
+
+import UmbrellaFront from "../assets/Home/Umbrella-Tree/14-9_360x.webp";
+import UmbrellaBack from "../assets/Home/Umbrella-Tree/16-7_600xBack.webp";
+
+import JadeSucculentFront from "../assets/Home/jade-suss/1_7d889b7e-e9b3-48c1-8e8d-a696e8d84f7d_360x.webp";
+import JadeSucculentBack from "../assets/Home/jade-suss/2_600xback.webp";
+
+const products = [
+  {
+    id: 1,
+    name: "Umbrella Tree",
+    rating: 0,
+    originalPrice: 90,
+    discountPercent: 31,
+    frontImage: UmbrellaFront,
+    backImage: UmbrellaBack,
+    isTopRated: false,
+    isBestSelling: true,
+    inStock: true,
+    variants: [
+      {
+        color: "Plaid",
+
+        image: UmbrellaFront,
+        price: 80,
+        inStock: true,
+      },
+      {
+        color: "Flaor",
+
+        image: UmbrellaBack,
+        price: 80,
+        inStock: true,
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "Tiger Aloe",
+    rating: 0,
+    originalPrice: 153.0,
+    frontImage: TigerGreen,
+    backImage: TigerBlack,
+    isTopRated: true,
+    isBestSelling: false,
+    inStock: true,
+    variants: [
+      {
+        color: "green",
+        hex: "#A8D5BA",
+        image: TigerGreen,
+        price: 155.0,
+        inStock: true,
+      },
+      {
+        color: "black",
+        hex: "#000000",
+        image: TigerBlack,
+        price: 152.0,
+        inStock: true,
+      },
+      {
+        color: "pink",
+        hex: "#FFC0CB",
+        image: TigerPink,
+        price: 150.0,
+        inStock: true,
+      },
+    ],
+  },
+
+  {
+    id: 3,
+    name: "Ruby Rubber Tree",
+    rating: 0,
+    originalPrice: 90.0,
+    discountPercent: 43,
+    frontImage: RubbyRubberFront,
+    backImage: PeaseLilyBack,
+    isTopRated: true,
+    isBestSelling: true,
+    inStock: true,
+    variants: [
+      {
+        color: "black",
+        hex: "#000000",
+        image: RubbyRubberFront,
+        price: 52.0,
+        inStock: true,
+      },
+      {
+        color: "pink",
+        hex: "#FFC0CB",
+        image: BeginnerBack,
+        price: 52.0,
+        inStock: true,
+      },
+    ],
+  },
+
+  {
+    id: 4,
+    name: "Peace Lily",
+    rating: 4,
+    originalPrice: 90,
+    discountPercent: 33,
+    frontImage: PeaseLilyFront,
+    backImage: PeaseLilyBack,
+    isTopRated: true,
+    isBestSelling: true,
+    inStock: true,
+    variants: [
+      {
+        color: "black",
+        hex: "#000000",
+        image: PeaseLilyBack,
+        price: 60,
+        inStock: true,
+      },
+      {
+        color: "grey",
+        hex: "#FFFFFF",
+        image: PeaseLilyFront,
+        price: 60,
+        inStock: true,
+      },
+    ],
+  },
+
+  {
+    id: 5,
+    name: "A Philippine (Upsell)",
+    rating: 0,
+    originalPrice: 80,
+    frontImage: PhilippineFront,
+    backImage: PhilippineBack,
+    isTopRated: true,
+    isBestSelling: false,
+    inStock: true,
+    variants: [
+      {
+        color: "Plaid",
+
+        image: PhilippineFront,
+        price: 80,
+        inStock: true,
+      },
+      {
+        color: "Flaor",
+
+        image: PhilippineBack,
+        price: 80,
+        inStock: true,
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "The Beginner Set",
+    rating: 0,
+    originalPrice: 130,
+    frontImage: BeginnerFront,
+    backImage: BeginnerBack,
+    isTopRated: true,
+    isBestSelling: true,
+    inStock: true,
+    variants: [
+      {
+        color: "black",
+        hex: "#000000",
+        image: BeginnerFront,
+        price: 130,
+        inStock: true,
+      },
+      {
+        color: "orange",
+        hex: "#FFA500",
+        image: BeginnerBack,
+        price: 130,
+        inStock: true,
+      },
+    ],
+  },
+
+  {
+    id: 7,
+    name: "Pink Dragon Tree",
+    rating: 0,
+    originalPrice: 100,
+
+    frontImage: DragonFront,
+    backImage: DragonBack,
+    isTopRated: true,
+    isBestSelling: false,
+    inStock: true,
+    variants: [
+      {
+        image: DragonFront,
+        price: 80,
+        inStock: false, // Out of stock
+      },
+    ],
+  },
+
+  {
+    id: 8,
+    name: "Palm",
+    rating: 0,
+    originalPrice: 50,
+    frontImage: PalmFront,
+    backImage: PalmBack,
+    isTopRated: true,
+    isBestSelling: true,
+    inStock: true,
+    variants: [
+      {
+        color: "white",
+        hex: "#FFFFFF",
+        image: PalmFront,
+        price: 50,
+        inStock: true,
+      },
+      {
+        color: "blue",
+        hex: "#1E90FF",
+        image: PalmBack,
+        price: 50,
+        inStock: true,
+      },
+    ],
+  },
+
+  {
+    id: 9,
+    name: "Bought Together",
+    rating: 0,
+    originalPrice: 82,
+    frontImage: BoughtFront,
+    backImage: BoughtBack,
+    isTopRated: true,
+    isBestSelling: false,
+    inStock: true,
+    variants: [
+      {
+        color: "red",
+        hex: "#FF0000",
+        image: BoughtFront,
+        price: 82,
+        inStock: true,
+      },
+      {
+        color: "gray",
+        hex: "#808080",
+        image: BoughtBack,
+        price: 82,
+        inStock: true,
+      },
+    ],
+  },
+
+  {
+    id: 10,
+    name: "Jade Succulent",
+    rating: 0,
+    originalPrice: 82,
+    frontImage: JadeSucculentFront,
+    backImage: JadeSucculentBack,
+    isTopRated: false,
+    isBestSelling: true,
+    inStock: true,
+    variants: [
+      {
+        color: "red",
+        hex: "#FF0000",
+        image: JadeSucculentFront,
+        price: 82,
+        inStock: true,
+      },
+      {
+        color: "gray",
+        hex: "#808080",
+        image: JadeSucculentBack,
+        price: 82,
+        inStock: true,
+      },
+    ],
+  },
+];
+
+export default products;
