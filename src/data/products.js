@@ -13,7 +13,7 @@ import PeaseLilyBack from "../assets/Home/Pease-lily/Pease-lily-black-360x.webp"
 import PhilippineFront from "../assets/Home/Philippine/PhilippineFront.webp";
 import PhilippineBack from "../assets/Home/Philippine/Philippine-Back-540x.webp";
 
-import BeginnerFront from "../assets/Home/Beginner/Beginner-front_540x.webp";
+import BeginnerFront from "../assets/Home/Beginner/Beginner-front_540x1.webp";
 import BeginnerBack from "../assets/Home/Beginner/Beginner-back_540x.webp";
 
 import DragonFront from "../assets/Home/Dragon/Dragon-front_540x.webp";
@@ -35,6 +35,7 @@ const products = [
   {
     id: 1,
     name: "Umbrella Tree",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 90,
     discountPercent: 31,
@@ -63,6 +64,7 @@ const products = [
   {
     id: 2,
     name: "Tiger Aloe",
+    description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 153.0,
     frontImage: TigerGreen,
@@ -98,6 +100,7 @@ const products = [
   {
     id: 3,
     name: "Ruby Rubber Tree",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 90.0,
     discountPercent: 43,
@@ -127,6 +130,7 @@ const products = [
   {
     id: 4,
     name: "Peace Lily",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 4,
     originalPrice: 90,
     discountPercent: 33,
@@ -156,6 +160,7 @@ const products = [
   {
     id: 5,
     name: "A Philippine (Upsell)",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 80,
     frontImage: PhilippineFront,
@@ -183,6 +188,7 @@ const products = [
   {
     id: 6,
     name: "The Beginner Set",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 130,
     frontImage: BeginnerFront,
@@ -211,6 +217,7 @@ const products = [
   {
     id: 7,
     name: "Pink Dragon Tree",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 100,
 
@@ -231,6 +238,7 @@ const products = [
   {
     id: 8,
     name: "Palm",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 50,
     frontImage: PalmFront,
@@ -259,6 +267,7 @@ const products = [
   {
     id: 9,
     name: "Bought Together",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 82,
     frontImage: BoughtFront,
@@ -287,6 +296,7 @@ const products = [
   {
     id: 10,
     name: "Jade Succulent",
+     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 82,
     frontImage: JadeSucculentFront,

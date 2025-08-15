@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { Suspense, useRef, useEffect, useState } from "react";
 import Layout from "../pages/Layout.jsx";
 import { IoStar, IoStarOutline } from "react-icons/io5";
 import { ChevronRight, ChevronLeft, Star, MoveRight } from "lucide-react";
 import products from "../data/products.js";
-import ProductCard from "../data/ProductCard.jsx";
-import Footer from "../pages/Footer.jsx";
+const ProductCard = React.lazy(() => import("../data/ProductCard.jsx"));
+const Footer = React.lazy(() => import("../pages/Footer.jsx"));
 
 import Slider1 from "../assets/Home/slider-1-1.jpg";
 import Slider2 from "../assets/Home/slider-1-2.jpg";
@@ -225,6 +225,7 @@ export default function HomeModern() {
           <img
             src={slides[index].image}
             alt="slider"
+            loading="lazy"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-white text-center px-4">
@@ -277,6 +278,7 @@ export default function HomeModern() {
             <img
               src={banner1}
               alt="new Arrivals"
+              loading="lazy"
               className="transition-transform duration-500 hover:scale-125"
             />
             <div className="absolute text-start bottom-12 left-6 ">
@@ -292,7 +294,8 @@ export default function HomeModern() {
           <div className="group relative flex items-center justify-center overflow-hidden">
             <img
               src={banner2}
-              alt="Girf green"
+              alt="Green plant"
+              loading="lazy"
               className="h-full w-full object-cover transition-transform duration-500 hover:scale-125"
             />
             <div className="absolute text-center  bottom-12 ">
@@ -310,6 +313,7 @@ export default function HomeModern() {
             <img
               src={banner3}
               alt="new Arrivals"
+              loading="lazy"
               className="transition-transform duration-500 hover:scale-125"
             />
             <div className="absolute text-start bottom-12 left-6 ">
@@ -344,6 +348,7 @@ export default function HomeModern() {
                 <img
                   src={PolicyIcon1}
                   alt="quality"
+                  loading="lazy"
                   className="transition-transform duration-300 will-change-transform hover:animate-bounceX"
                 />
                 <div className="flex flex-col justify-center  ">
@@ -359,6 +364,7 @@ export default function HomeModern() {
                 <img
                   src={PolicyIcon2}
                   alt="quality"
+                  loading="lazy"
                   className="transition-transform duration-100 will-change-transform hover:animate-bounceX"
                 />
                 <div className="flex flex-col justify-center  ">
@@ -374,6 +380,7 @@ export default function HomeModern() {
                 <img
                   src={PolicyIcon3}
                   alt="quality"
+                  loading="lazy"
                   className="transition-transform duration-500  hover:animate-bounceX"
                 />
                 <div className="flex flex-col justify-center  ">
@@ -393,6 +400,7 @@ export default function HomeModern() {
             <img
               src={Ring1}
               alt="ring 1"
+              loading="lazy"
               className="absolute w-[530px] rotate-[25deg] animate-scalePulse z-10 pointer-events-none"
             />
 
@@ -400,6 +408,7 @@ export default function HomeModern() {
             <img
               src={Ring2}
               alt="ring 2"
+              loading="lazy"
               className="absolute w-[530px] animate-scalePulse   z-10 pointer-events-none"
             />
 
@@ -407,6 +416,7 @@ export default function HomeModern() {
             <img
               src={PolicyPot}
               alt="policy pot"
+              loading="lazy"
               className="relative z-0 w-[500px] object-contain"
             />
           </div>
@@ -446,7 +456,9 @@ export default function HomeModern() {
       </div>
 
       <div className=" flex items-center justify-center pb-24 group  hover:text-green-600">
-        <span className="border border-black p-10 mr-24 rounded-full  group-hover:animate-bounceX cursor-pointer"> </span>
+        <span className="border border-black p-10 mr-24 rounded-full  group-hover:animate-bounceX cursor-pointer">
+          {" "}
+        </span>
         <div className="absolute flex  items-center justify-center bg-white group-hover:animate-bounceX cursor-pointer ">
           <span className="text-lg">View More</span>
           <MoveRight />
@@ -468,6 +480,7 @@ export default function HomeModern() {
           <img
             src={testimonial[testimonialIndex].image}
             alt={testimonial[testimonialIndex].name}
+            loading="lazy"
             className="rounded-full mt-8 w-40 h-40 shadow-md"
           />
           <p className="text-lg font-poppins">
@@ -493,10 +506,12 @@ export default function HomeModern() {
           <img
             src={TextRotate}
             alt="textRotation_image"
+            loading="lazy"
             className="absolute z-10 -top-12 left-20 animate-spin-slow "
           />
           <img
             src={PlantOffice}
+            loading="lazy"
             alt="Plant for office"
             className="relative w-full h-full"
           />
@@ -541,11 +556,13 @@ export default function HomeModern() {
           <img
             src={TextRotate}
             alt="textRotation_image"
+            loading="lazy"
             className="absolute z-10 -top-12 right-20 animate-spin-slow will-change-transform "
           />
           <img
             src={SetStyle}
             alt="SetStyle for all"
+            loading="lazy"
             className="relative w-full h-full"
           />
         </div>
@@ -644,6 +661,7 @@ export default function HomeModern() {
               <img
                 src={service.icon}
                 alt={service.title}
+                loading="lazy"
                 className="h-12 justify-center "
               />
               <div className="flex flex-col">
@@ -659,7 +677,9 @@ export default function HomeModern() {
         </div>
       </div>
 
-      <Footer />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Footer />
+      </Suspense>
     </Layout>
   );
 }

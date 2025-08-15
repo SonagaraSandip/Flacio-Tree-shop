@@ -213,8 +213,7 @@ export default function Navbar({ setLayout, transparentUntilScroll }) {
               <div
                 onMouseEnter={handleDropDownEnter}
                 onMouseLeave={handleDropDownLeave}
-                className="absolute -left-6 top-4 mt-4 z-50 bg-white shadow-xl p-5 w-[750px] max-h-[90vh]  overflow-y-auto 
-"
+                className="absolute -left-6 top-4 mt-4 z-50 bg-white shadow-xl p-5 w-[750px] max-h-[90vh] overflow-y-auto "
               >
                 <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   {HomePages.map((page) => (

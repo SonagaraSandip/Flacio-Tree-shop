@@ -7,6 +7,14 @@ body {
   overflow-x: hidden;
 }
 
+/* Add to your CSS */
+.thumb {
+  transition: left 0.1s ease;
+}
+.thumb:active {
+  transform: scale(1.2);
+}
+
 
  @font-face  {
       font-family: 'librebaskerville';

@@ -1,6 +1,6 @@
 //Single product item with logic for image, hover, etc.
 
-import React, { useState } from "react";
+import React, { useState,  } from "react";
 import { ShoppingBag, Heart, ArrowDownUp, Search } from "lucide-react";
 import { MdPlayArrow } from "react-icons/md";
 
@@ -76,7 +76,6 @@ const ProductCard = ({ product }) => {
             className="w-full h-full object-cover max-w-full max-h-full  cursor-pointer transition-transform duration-500  hover:scale-110"
             style={{
               transitionDelay: isHovered ? "0.5s" : "0s",
-            
             }}
           />
         </div>
@@ -262,4 +261,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);
