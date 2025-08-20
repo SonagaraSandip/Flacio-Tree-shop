@@ -5,6 +5,7 @@ import { ChevronRight, ChevronLeft, Star, MoveRight } from "lucide-react";
 import products from "../data/products.js";
 const ProductCard = React.lazy(() => import("../data/ProductCard.jsx"));
 const Footer = React.lazy(() => import("../pages/Footer.jsx"));
+import ScrollToTop from "../pages/ScrollToTop.jsx";
 
 import Slider1 from "../assets/Home/slider-1-1.jpg";
 import Slider2 from "../assets/Home/slider-1-2.jpg";
@@ -680,6 +681,8 @@ export default function HomeModern() {
       <Suspense fallback={<div>Loading...</div>}>
         <Footer />
       </Suspense>
+
+      <ScrollToTop />
     </Layout>
   );
 }

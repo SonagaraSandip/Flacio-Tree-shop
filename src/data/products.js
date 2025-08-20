@@ -35,7 +35,8 @@ const products = [
   {
     id: 1,
     name: "Umbrella Tree",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 90,
     discountPercent: 31,
@@ -44,6 +45,10 @@ const products = [
     isTopRated: false,
     isBestSelling: true,
     inStock: true,
+    AirPurifying: true,
+    CeramicPots: true,
+    HerbSeeds: false,
+    IndoorPlants: false,
     variants: [
       {
         color: "Plaid",
@@ -53,8 +58,7 @@ const products = [
         inStock: true,
       },
       {
-        color: "Flaor",
-
+        color: "Floral",
         image: UmbrellaBack,
         price: 80,
         inStock: true,
@@ -64,7 +68,8 @@ const products = [
   {
     id: 2,
     name: "Tiger Aloe",
-    description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 153.0,
     frontImage: TigerGreen,
@@ -72,6 +77,10 @@ const products = [
     isTopRated: true,
     isBestSelling: false,
     inStock: true,
+    AirPurifying: true,
+    CeramicPots: true,
+    HerbSeeds: false,
+    IndoorPlants: false,
     variants: [
       {
         color: "green",
@@ -100,7 +109,8 @@ const products = [
   {
     id: 3,
     name: "Ruby Rubber Tree",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 90.0,
     discountPercent: 43,
@@ -109,6 +119,10 @@ const products = [
     isTopRated: true,
     isBestSelling: true,
     inStock: true,
+    AirPurifying: true,
+    CeramicPots: true,
+    HerbSeeds: true,
+    IndoorPlants: true,
     variants: [
       {
         color: "black",
@@ -130,7 +144,8 @@ const products = [
   {
     id: 4,
     name: "Peace Lily",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 4,
     originalPrice: 90,
     discountPercent: 33,
@@ -139,6 +154,10 @@ const products = [
     isTopRated: true,
     isBestSelling: true,
     inStock: true,
+    AirPurifying: true,
+    CeramicPots: true,
+    HerbSeeds: false,
+    IndoorPlants: false,
     variants: [
       {
         color: "black",
@@ -160,7 +179,8 @@ const products = [
   {
     id: 5,
     name: "A Philippine (Upsell)",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 80,
     frontImage: PhilippineFront,
@@ -168,6 +188,10 @@ const products = [
     isTopRated: true,
     isBestSelling: false,
     inStock: true,
+    AirPurifying: false,
+    CeramicPots: true,
+    HerbSeeds: true,
+    IndoorPlants: false,
     variants: [
       {
         color: "Plaid",
@@ -188,7 +212,8 @@ const products = [
   {
     id: 6,
     name: "The Beginner Set",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 130,
     frontImage: BeginnerFront,
@@ -196,6 +221,11 @@ const products = [
     isTopRated: true,
     isBestSelling: true,
     inStock: true,
+    AirPurifying: true,
+    CeramicPots: true,
+    HerbSeeds: false,
+    IndoorPlants: true,
+    size: [30, 50, 60],
     variants: [
       {
         color: "black",
@@ -217,7 +247,8 @@ const products = [
   {
     id: 7,
     name: "Pink Dragon Tree",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 100,
 
@@ -225,7 +256,12 @@ const products = [
     backImage: DragonBack,
     isTopRated: true,
     isBestSelling: false,
-    inStock: true,
+    inStock: false, // Out of stock
+    outOfStock: true,
+    AirPurifying: true,
+    CeramicPots: false,
+    HerbSeeds: true,
+    IndoorPlants: true,
     variants: [
       {
         image: DragonFront,
@@ -238,7 +274,8 @@ const products = [
   {
     id: 8,
     name: "Palm",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 50,
     frontImage: PalmFront,
@@ -246,6 +283,10 @@ const products = [
     isTopRated: true,
     isBestSelling: true,
     inStock: true,
+    AirPurifying: false,
+    CeramicPots: true,
+    HerbSeeds: true,
+    IndoorPlants: false,
     variants: [
       {
         color: "white",
@@ -267,7 +308,8 @@ const products = [
   {
     id: 9,
     name: "Bought Together",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 82,
     frontImage: BoughtFront,
@@ -275,6 +317,10 @@ const products = [
     isTopRated: true,
     isBestSelling: false,
     inStock: true,
+    AirPurifying: false,
+    CeramicPots: true,
+    HerbSeeds: true,
+    IndoorPlants: true,
     variants: [
       {
         color: "red",
@@ -296,7 +342,8 @@ const products = [
   {
     id: 10,
     name: "Jade Succulent",
-     description: "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
+    description:
+      "Curabitur egestas malesuada volutpat. Nunc vel vestibulum odio, ac pellentesque lacus. Pellentesque dapibus nunc nec est imperdiet, a malesuada sem rutrum",
     rating: 0,
     originalPrice: 82,
     frontImage: JadeSucculentFront,
@@ -304,6 +351,10 @@ const products = [
     isTopRated: false,
     isBestSelling: true,
     inStock: true,
+    AirPurifying: false,
+    CeramicPots: true,
+    HerbSeeds: true,
+    IndoorPlants: true,
     variants: [
       {
         color: "red",

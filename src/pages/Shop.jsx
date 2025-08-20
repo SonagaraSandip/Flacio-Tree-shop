@@ -6,6 +6,7 @@ import { IoIosStarOutline } from "react-icons/io";
 import products from "../data/products";
 import ProductListCard from "../data/ProductListCard";
 import ProductCard from "../data/ProductCard";
+import ScrollToTop from "./ScrollToTop";
 
 import Footer from "./Footer";
 
@@ -33,10 +34,11 @@ const Shop = () => {
   const MAX_PRICE = 153;
   const MIN_PRICE = 0;
   const [openCollection, setOpenCollection] = useState(true);
+  const [selectedCollection, setSelectedCollection] = useState(null);
   const [openAvailability, setOpenAvailability] = useState(true);
   const [openPrice, setOpenPrice] = useState(true);
   const [openSize, setOpenSize] = useState(true);
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState([]);
   const [openColor, setOpenColor] = useState(true);
   const [selectedColor, setSelectedColor] = useState(null);
   const [showAll, setShowAll] = useState(false);
@@ -100,6 +102,61 @@ const Shop = () => {
 
   const [activeThumb, setActiveThumb] = useState(null); // min or max
 
+  const handleCollectionChange = (collection) => {
+    setSelectedCollection(collection);
+  };
+
+  const handleAvailabilityChange = (type) => {
+    setAvailability((prev) => ({
+      ...prev,
+      [type]: !prev[type],
+    }));
+  };
+
+  const filteredProducts = products.filter((product) => {
+    if (selectedCollection) {
+      const collectionMatch =
+        (selectedCollection === "Air Purifying" && product.AirPurifying) ||
+        (selectedCollection === "Ceramic Pots" && product.CeramicPots) ||
+        (selectedCollection === "Herb Seeds" && product.HerbSeeds) ||
+        (selectedCollection === "Indoor Plants" && product.IndoorPlants);
+
+      if (!collectionMatch) return false;
+    }
+
+    //for stock filter
+    if (availability.inStock && !availability.outOfStock && !product.inStock) {
+      return false;
+    }
+    if (!availability.inStock && availability.outOfStock && product.inStock) {
+      return false;
+    }
+
+    //for price filter
+    const productPrice = product.DiscountPrice || product.originalPrice;
+    if (productPrice < price.min || productPrice > price.max) {
+      return false;
+    }
+
+    //for size filter
+    if (selectedSize.length > 0) {
+      if (
+        !product.size ||
+        !product.size.some((s) => selectedSize.includes(String(s)))
+      ) {
+        return false;
+      }
+    }
+
+    //for color filter
+
+    return true;
+  });
+
+  const resetCollection = () => {
+    setSelectedCollection(null);
+  };
+
   const resetAvailability = () => {
     setAvailability({ inStock: false, outOfStock: false });
   };
@@ -124,11 +181,13 @@ const Shop = () => {
   };
 
   const resetSize = () => {
-    setSelectedSize(null);
+    setSelectedSize([]);
   };
 
   const handleSizeChange = (size) => {
-    setSelectedSize(size);
+    setSelectedSize((prev) =>
+      prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]
+    );
   };
 
   const resetColor = () => {
@@ -168,11 +227,11 @@ const Shop = () => {
       />
 
       <h1 className="flex items-center justify-center h-[300px] font-librebaskerville text-6xl  text-black ">
-        Products
+        {<span>{selectedCollection || "Products"} </span>}
       </h1>
 
       {/* Left side product details */}
-      <div className="container flex mx-auto ">
+      <div className="container flex md:mx-auto ">
         <div
           className="w-[25%] bg-white px-4 md:px-6 lg:px-8 py-4 md:py-6 lg:py-8"
           style={filterSectionStyle}
@@ -195,6 +254,16 @@ const Shop = () => {
                 />
               </span>
             </h2>
+
+            {/* reset collection button */}
+            {openCollection && selectedCollection && (
+              <button
+                onClick={resetCollection}
+                className="self-start text-gray-600 mb-4 font-poppins text-sm border-b-2 border-gray-700 hover:text-red-700 "
+              >
+                Reset
+              </button>
+            )}
             <div
               ref={collectionRef}
               style={{
@@ -204,26 +273,58 @@ const Shop = () => {
               }}
             >
               {openCollection && (
-                <ul className="space-y-3 font-poppins pb-2">
-                  <li>
-                    <a href="#" className="text-gray-500 hover:text-green-800">
-                      Air Purifying
-                    </a>
+                <ul className="space-y-3 font-poppins pb-2 ">
+                  <li
+                    onClick={() => handleCollectionChange("Air Purifying")}
+                    className={`flex justify-between items-center hover:text-green-700 ${
+                      selectedCollection === "Air Purifying"
+                        ? "text-green-900 font-semibold"
+                        : "text-gray-500"
+                    }`}
+                  >
+                    <p className={` hover:text-green-800 `}>Air Purifying</p>
+                    <p className="text-sm flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full">
+                      {products.filter((p) => p.AirPurifying).length}
+                    </p>
                   </li>
-                  <li>
-                    <a href="#" className="text-gray-500 hover:text-green-800">
-                      Ceramic Pots
-                    </a>
+                  <li
+                    onClick={() => handleCollectionChange("Ceramic Pots")}
+                    className={`flex justify-between items-center hover:text-green-700 ${
+                      selectedCollection === "Ceramic Pots"
+                        ? "text-green-900 font-semibold"
+                        : "text-gray-500"
+                    }`}
+                  >
+                    <p className={` hover:text-green-800 `}>Ceramic Pots</p>
+                    <p className="text-sm flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full ">
+                      {products.filter((p) => p.CeramicPots).length}
+                    </p>
                   </li>
-                  <li>
-                    <a href="#" className="text-gray-500 hover:text-green-800">
-                      Herb Seeds
-                    </a>
+                  <li
+                    onClick={() => handleCollectionChange("Herb Seeds")}
+                    className={`flex justify-between items-center hover:text-green-700 ${
+                      selectedCollection === "Herb Seeds"
+                        ? "text-green-900 font-semibold"
+                        : "text-gray-500"
+                    }`}
+                  >
+                    <p className={` hover:text-green-800 `}>Herb Seeds</p>
+                    <p className="text-sm flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full ">
+                      {products.filter((p) => p.HerbSeeds).length}
+                    </p>
                   </li>
-                  <li>
-                    <a href="#" className="text-gray-500 hover:text-green-800">
-                      Indoor Plants
-                    </a>
+                  <li
+                    onClick={() => handleCollectionChange("Indoor Plants")}
+                    className={`flex justify-between items-center hover:text-green-700 ${
+                      selectedCollection === "Indoor Plants"
+                        ? "text-green-900 font-semibold"
+                        : "text-gray-500"
+                    }`}
+                  >
+                    <p className={` hover:text-green-800 `}>Indoor Plants</p>
+                    <p className="text-sm flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full ">
+                      {products.filter((p) => p.IndoorPlants).length}
+                    </p>
                   </li>
                 </ul>
               )}
@@ -269,37 +370,147 @@ const Shop = () => {
             >
               {openAvailability && (
                 <ul className="space-y-3 font-poppins">
-                  <li className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      id="inStock"
-                      name="inStock"
-                      checked={availability.inStock}
-                      onChange={handleCheckBoxChange}
-                      className="hover:text-black cursor-pointer"
-                    />
-                    <label
-                      htmlFor="inStock"
-                      className="text-gray-500 hover:text-green-800 cursor-pointer"
-                    >
-                      In Stock
-                    </label>
+                  <li
+                    onClick={(e) => {
+                      const isStockCount = filteredProducts.filter(
+                        (fp) => fp.inStock
+                      ).length;
+
+                      if (isStockCount > 0) {
+                        handleAvailabilityChange("inStock");
+                      } else {
+                        e.stopPropagation();
+                      }
+                    }}
+                    className={`flex items-center justify-between gap-2 ${
+                      availability.inStock
+                        ? " text-green-800 font-semibold "
+                        : filteredProducts.filter((fp) => fp.inStock).length > 0
+                        ? "text-gray-500 hover:text-green-800 cursor-pointer"
+                        : "line-through cursor-not-allowed"
+                    }`}
+                  >
+                    <div className="flex items-center font-poppins gap-2">
+                      <input
+                        type="checkbox"
+                        id="inStock"
+                        name="inStock"
+                        onChange={(e) => {
+                          if (
+                            filteredProducts.filter((fp) => fp.inStock).length >
+                            0
+                          ) {
+                            handleCheckBoxChange(e);
+                          } else {
+                            e.stopPropagation();
+                          }
+                        }}
+                        checked={availability.inStock}
+                        disabled={
+                          filteredProducts.filter((fp) => fp.inStock).length ===
+                          0
+                        }
+                        className="hover:text-black cursor-pointer"
+                      />
+                      <label
+                        htmlFor="inStock"
+                        onClick={() => {
+                          filteredProducts.filter((fp) => fp.inStock).length >
+                            0 && handleAvailabilityChange("inStock");
+                        }}
+                        className={` ${
+                          filteredProducts.filter((fp) => fp.inStock).length ===
+                          0
+                            ? "line-through cursor-not-allowed click-none"
+                            : "cursor-pointer"
+                        }`}
+                      >
+                        In Stock
+                      </label>
+                    </div>
+                    <div className="text-sm text-gray-500 flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full">
+                      {filteredProducts.filter((p) => p.inStock).length}
+                    </div>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      id="outOfStock"
-                      name="outOfStock"
-                      checked={availability.outOfStock}
-                      onChange={handleCheckBoxChange}
-                      className="hover:text-black cursor-pointer"
-                    />
-                    <label
-                      htmlFor="outOfStock"
-                      className="text-gray-500 hover:text-green-800 cursor-pointer"
-                    >
-                      Out of Stock
-                    </label>
+                  <li
+                    onClick={(e) => {
+                      const outOfStockCount = filteredProducts.filter(
+                        (fp) => fp.outOfStock
+                      ).length;
+
+                      if (outOfStockCount > 0) {
+                        handleAvailabilityChange("outOfStock");
+                      } else {
+                        e.stopPropagation();
+                      }
+                    }}
+                    className={`flex items-center justify-between gap-2 ${
+                      availability.outOfStock
+                        ? " text-green-800 font-semibold "
+                        : filteredProducts.filter((fp) => fp.outOfStock)
+                            .length > 0
+                        ? "text-gray-500 hover:text-green-800 cursor-pointer"
+                        : "line-through cursor-not-allowed"
+                    } `}
+                  >
+                    <div className="flex font-poppins gap-2 ">
+                      <input
+                        type="checkbox"
+                        id="outOfStock"
+                        name="outOfStock"
+                        checked={availability.outOfStock}
+                        onChange={(e) => {
+                          if (
+                            filteredProducts.filter((fp) => fp.outOfStock)
+                              .length > 0
+                          ) {
+                            handleCheckBoxChange(e);
+                          } else {
+                            e.stopPropagation();
+                          }
+                        }}
+                        disabled={
+                          filteredProducts.filter((fp) => fp.outOfStock)
+                            .length === 0
+                        }
+                        className={`cursor-pointer ${
+                          filteredProducts.filter((fp) => fp.outOfStock)
+                            .length === 0
+                            ? "cursor-not-allowed"
+                            : ""
+                        }`}
+                      />
+                      <label
+                        htmlFor="outOfStock"
+                        onClick={() => {
+                          filteredProducts.filter((fp) => fp.outOfStock)
+                            .length > 0 &&
+                            handleAvailabilityChange("outOfStock");
+                        }}
+                        className=" cursor-pointer"
+                      >
+                        <span
+                          className={`${
+                            filteredProducts.filter((fp) => fp.outOfStock)
+                              .length === 0
+                              ? "line-through cursor-not-allowed"
+                              : ""
+                          }`}
+                        >
+                          Out of Stock
+                        </span>
+                      </label>
+                    </div>
+                    <div className="text-sm text-gray-500 flex items-center justify-center w-6 h-6 bg-gray-200 rounded-full">
+                      {
+                        products.filter(
+                          (p) =>
+                            p.outOfStock &&
+                            filteredProducts.filter((fp) => fp.id === p.id)
+                              .length
+                        ).length
+                      }
+                    </div>
                   </li>
                 </ul>
               )}
@@ -438,9 +649,17 @@ const Shop = () => {
               {openSize && (
                 <div className="flex gap-4  mt-2">
                   <button
-                    onClick={() => handleSizeChange("30")}
+                    onClick={() => {
+                      if (selectedSize.includes("30")) {
+                        setSelectedSize((prev) =>
+                          prev.filter((s) => s !== "30")
+                        );
+                      } else {
+                        handleSizeChange("30");
+                      }
+                    }}
                     className={`py-2 px-4 border hover:border-black rounded-full ${
-                      selectedSize === "30"
+                      selectedSize.includes("30")
                         ? "border-black bg-gray-200"
                         : "border-gray-400"
                     }`}
@@ -451,9 +670,17 @@ const Shop = () => {
                     </span>
                   </button>
                   <button
-                    onClick={() => handleSizeChange("50")}
+                    onClick={() => {
+                      if (selectedSize.includes("50")) {
+                        setSelectedSize((prev) =>
+                          prev.filter((s) => s !== "50")
+                        );
+                      } else {
+                        handleSizeChange("50");
+                      }
+                    }}
                     className={`py-2 px-4 border hover:border-black rounded-full ${
-                      selectedSize === "50"
+                      selectedSize.includes("50")
                         ? "border-black bg-gray-200"
                         : "border-gray-400"
                     }`}
@@ -464,9 +691,17 @@ const Shop = () => {
                     </span>
                   </button>
                   <button
-                    onClick={() => handleSizeChange("60")}
+                    onClick={() => {
+                      if (selectedSize.includes("60")) {
+                        setSelectedSize((prev) =>
+                          prev.filter((s) => s !== "60")
+                        );
+                      } else {
+                        handleSizeChange("60");
+                      }
+                    }}
                     className={`py-2 px-4  border hover:border-black rounded-full ${
-                      selectedSize === "60"
+                      selectedSize.includes("60")
                         ? "border-black bg-gray-200"
                         : "border-gray-400"
                     }`}
@@ -746,7 +981,7 @@ const Shop = () => {
                   : "grid grid-cols-4 gap-6"
               }
             >
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <div key={product.id}>
                   {layout === "list" ? (
                     <div>
@@ -763,6 +998,7 @@ const Shop = () => {
       </div>
 
       <Footer />
+      <ScrollToTop />
     </Layout>
   );
 };
